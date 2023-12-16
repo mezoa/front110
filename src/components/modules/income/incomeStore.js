@@ -1,7 +1,7 @@
 import axios from "axios";
-import formatValidationErrors from "../../utils/format-validation-errors";
+import formatValidationErrors from "../../utils/format-validation-error";
 import { useSelector, useDispatch } from "react-redux";
-import { addNotification } from "../../shared/notification/notificationActions";
+import { addNotification } from "../../shared/notification/notificationstore";
 
 export const useIncomeStore = () => {
     const dispatch = useDispatch();

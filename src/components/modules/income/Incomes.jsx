@@ -14,24 +14,24 @@ import AddIncome from "./AddIncome";
 import EditIncome from "./EditIncome";
 import ViewIncome from "./ViewIncome";
 
-const Incomes = () => {
-    const [loading, setLoading] = useState(false);
-    const [filterTab, setFilterTab] = useState(true);
-    const [showAddIncome, setShowAddIncome] = useState(false);
-    const [showEditIncome, setShowEditIncome] = useState(false);
-    const [showViewIncome, setShowViewIncome] = useState(false);
+let Incomes = () => {
+    let [loading, setLoading] = useState(false);
+    let [filterTab, setFilterTab] = useState(true);
+    let [showAddIncome, setShowAddIncome] = useState(false);
+    let [showEditIncome, setShowEditIncome] = useState(false);
+    let [showViewIncome, setShowViewIncome] = useState(false);
 
     let incomeStore = useIncomeStore();
-    const confirmStore = useConfirmStore();
-    const incomes = incomeStore.incomes;
-    const incomeCategoryStore = useIncomeCategoryStore();
+    let confirmStore = useConfirmStore();
+    let incomes = incomeStore.incomes;
+    let incomeCategoryStore = useIncomeCategoryStore();
     let incomeCategories = [];
 
-    const q_title = "";
-    const selected_incomes = [];
-    const all_selectd = false;
+    let q_title = "";
+    let selected_incomes = [];
+    let all_selectd = false;
 
-    const select_all = () => {
+    let select_all = () => {
         if (all_selectd === false) {
             selected_incomes = [];
             incomeStore.incomes.forEach((element) => {
@@ -44,7 +44,7 @@ const Incomes = () => {
         }
     };
 
-    const deleteData = async (id) => {
+    let deleteData = async (id) => {
         confirmStore.show_box({ message: "Do you want to delete selected income?" }).then(async () => {
             if (confirmStore.do_action === true) {
                 incomeStore.deleteIncome(id).then(() => {
@@ -59,17 +59,17 @@ const Incomes = () => {
         });
     };
 
-    const openEditIncomeModal = (id) => {
+    let openEditIncomeModal = (id) => {
         incomeStore.edit_income_id = id;
         setShowEditIncome(true);
     };
 
-    const openViewIncomeModal = (id) => {
+    let openViewIncomeModal = (id) => {
         incomeStore.view_income_id = id;
         setShowViewIncome(true);
     };
 
-    const fetchData = async (page = incomeStore.current_page, limit = incomeStore.limit, q_title = incomeStore.q_title) => {
+    let fetchData = async (page = incomeStore.current_page, limit = incomeStore.limit, q_title = incomeStore.q_title) => {
         setLoading(true);
 
         all_selectd = false;
@@ -235,7 +235,7 @@ const Incomes = () => {
                                                 if (e.target.checked) {
                                                     selected_incomes.push(income.id);
                                                 } else {
-                                                    const index = selected_incomes.indexOf(income.id);
+                                                    let index = selected_incomes.indexOf(income.id);
                                                     if (index > -1) {
                                                         selected_incomes.splice(index, 1);
                                                     }
